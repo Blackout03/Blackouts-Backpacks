@@ -48,7 +48,7 @@ public class BackpackItem extends Item implements IDyeableArmorItem {
         CompoundNBT nbt = super.getShareTag(stack);
         if (nbt != null)
             stack.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
-                    .ifPresent(capability -> nbt.put("BackpackInventory", ((ItemStackHandler) capability).serializeNBT()));
+                    .ifPresent(capability -> nbt.put("Inventory", ((ItemStackHandler) capability).serializeNBT()));
         return nbt;
     }
 
@@ -57,7 +57,7 @@ public class BackpackItem extends Item implements IDyeableArmorItem {
         super.readShareTag(stack, nbt);
         if (nbt != null)
             stack.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
-                    .ifPresent(capability -> ((ItemStackHandler) capability).deserializeNBT((CompoundNBT) nbt.get("BackpackInventory")));
+                    .ifPresent(capability -> ((ItemStackHandler) capability).deserializeNBT((CompoundNBT) nbt.get("Inventory")));
     }
 
     @Override
