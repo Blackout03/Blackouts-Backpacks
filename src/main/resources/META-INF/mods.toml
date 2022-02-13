@@ -1,0 +1,33 @@
+modLoader="javafml"
+loaderVersion="[36,)"
+displayURL="https://blackout03.github.io/"
+license="All Rights Reserved."
+
+[[mods]]
+modId="blackoutsbackpacks"
+version="${file.jarVersion}"
+displayName="Blackouts Backpacks"
+authors="Blackout"
+description='''Adds Backpacks to Minecraft.'''
+itemIcon="blackoutsbackpacks:leather_backpack"
+
+[[dependencies.blackoutsbackpacks]]
+modId="forge"
+mandatory=true
+versionRange="[36.2.20,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.blackoutsbackpacks]]
+modId="minecraft"
+mandatory=true
+versionRange="[1.16.5,1.17]"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.blackoutsbackpacks]]
+modId="projecte"
+mandatory=false
+versionRange="[PE1.0,]"
+ordering="AFTER"
+side="BOTH"

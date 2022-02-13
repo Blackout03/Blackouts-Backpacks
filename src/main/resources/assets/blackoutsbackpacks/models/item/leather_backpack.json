@@ -1,0 +1,7 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "blackoutsbackpacks:item/leather_backpack",
+    "layer1": "blackoutsbackpacks:item/leather_backpack_overlay"
+  }
+}

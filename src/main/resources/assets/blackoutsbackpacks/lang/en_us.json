@@ -1,0 +1,12 @@
+{
+  "itemGroup.blackoutsbackpacks.backpacks": "Blackout's Backpacks",
+
+  "item.blackoutsbackpacks.leather_backpack": "Leather Backpack",
+  "item.blackoutsbackpacks.ender_backpack": "Ender Backpack",
+
+  "container.blackoutsbackpacks.backpack": "Backpack",
+  "container.blackoutsbackpacks.ender_backpack": "Ender Backpack",
+
+  "stat.blackoutsbackpacks.open_backpack": "Backpacks Opened",
+  "stat.blackoutsbackpacks.open_ender_backpack": "Ender Backpacks Opened"
+}

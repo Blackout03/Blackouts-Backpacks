@@ -1,0 +1,103 @@
+buildscript {
+    repositories {
+        maven { url = "https://maven.minecraftforge.net/" }
+        mavenCentral()
+    }
+    dependencies {
+        classpath group: "net.minecraftforge.gradle", name: "ForgeGradle", version: "5.1.+", changing: true
+    }
+}
+
+apply plugin: "net.minecraftforge.gradle"
+apply plugin: "eclipse"
+apply plugin: "maven-publish"
+
+group = "com.blackout"
+version = "${project.minecraftVersion}-${project.modVersion}"
+archivesBaseName = project.modId
+
+java.toolchain.languageVersion = JavaLanguageVersion.of 8
+
+minecraft {
+    mappings channel: "official", version: "${project.minecraftVersion}"
+
+    runs {
+        client {
+            workingDirectory project.file('run')
+            property 'forge.logging.markers', 'SCAN'
+            property 'forge.logging.console.level', 'debug'
+            mods {
+                blackoutsbackpacks {
+                    source sourceSets.main
+                }
+            }
+        }
+        server {
+            workingDirectory project.file('run')
+            property 'forge.logging.markers', 'SCAN'
+            property 'forge.logging.console.level', 'debug'
+            mods {
+                blackoutsbackpacks {
+                    source sourceSets.main
+                }
+            }
+        }
+        data {
+            workingDirectory project.file('run')
+            property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
+            property 'forge.logging.console.level', 'debug'
+            args '--mod', 'blackoutsbackpacks', '--all', '--output', file('src/main/generated/'), '--existing', file('src/main/resources/')
+            mods {
+                blackoutsbackpacks {
+                    source sourceSets.main
+                }
+            }
+        }
+    }
+}
+
+sourceSets {
+    main.resources.srcDirs += 'src/main/generated'
+}
+
+dependencies {
+    minecraft "net.minecraftforge:forge:${project.minecraftVersion}-${project.forgeVersion}"
+
+    implementation fg.deobf("curse.maven:projecte-226410:${project.projecte}")
+
+    implementation fg.deobf("mezz.jei:jei-1.16.5:${project.jei}:api")
+    implementation fg.deobf("mezz.jei:jei-1.16.5:${project.jei}")
+    implementation fg.deobf("curse.maven:just-enough-resources-jer-240630:${project.jer}")
+
+    implementation fg.deobf("curse.maven:configured-457570:${project.configured}")
+    implementation fg.deobf("curse.maven:catalogue-459701:${project.catalogue}")
+}
+
+repositories {
+    maven {
+        name = "Progwml6 maven"
+        url = "https://dvs1.progwml6.com/files/maven/"
+    }
+    maven {
+        name = "ModMaven"
+        url = "https://modmaven.dev"
+    }
+    maven {
+        name = "CurseForge"
+        url = "https://www.cursemaven.com"
+    }
+}
+
+jar {
+    manifest {
+        attributes([
+                "Specification-Title"     : project.modName,
+                "Specification-Vendor"    : "Blackout",
+                "Specification-Version"   : "1",
+                "Implementation-Title"    : project.modName,
+                "Implementation-Vendor"   : "Blackout",
+                "Implementation-Version"  : project.modVersion,
+                "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
+        ])
+    }
+}
