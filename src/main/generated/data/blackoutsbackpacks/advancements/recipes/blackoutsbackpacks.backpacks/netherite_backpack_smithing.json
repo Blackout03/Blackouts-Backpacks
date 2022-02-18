@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "blackoutsbackpacks:netherite_backpack_smithing"
+    ]
+  },
+  "criteria": {
+    "has_netherite_ingot": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:netherite_ingot"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "blackoutsbackpacks:netherite_backpack_smithing"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_netherite_ingot",
+      "has_the_recipe"
+    ]
+  ]
+}

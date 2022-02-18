@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "blackoutsbackpacks:gold_backpack"
+  },
+  "addition": {
+    "item": "minecraft:diamond_block"
+  },
+  "result": {
+    "item": "blackoutsbackpacks:diamond_backpack"
+  }
+}

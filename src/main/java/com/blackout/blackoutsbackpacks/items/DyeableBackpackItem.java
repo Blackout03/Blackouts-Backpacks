@@ -8,6 +8,7 @@ import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.INamedContainerProvider;
+import net.minecraft.item.IDyeableArmorItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
@@ -23,12 +24,12 @@ import net.minecraftforge.items.ItemStackHandler;
 
 import java.util.List;
 
-public class BackpackItem extends Item {
+public class DyeableBackpackItem extends Item implements IDyeableArmorItem {
     private static final ITextComponent CONTAINER_TITLE = new TranslationTextComponent("container.blackoutsbackpacks.backpack");
     public int width;
     public int height;
 
-    public BackpackItem(Properties properties, int width, int height) {
+    public DyeableBackpackItem(Properties properties, int width, int height) {
         super(properties);
         this.width = width;
         this.height = height;

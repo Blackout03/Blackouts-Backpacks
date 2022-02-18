@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "blackoutsbackpacks:leather_backpack"
+  },
+  "addition": {
+    "item": "minecraft:iron_block"
+  },
+  "result": {
+    "item": "blackoutsbackpacks:iron_backpack"
+  }
+}

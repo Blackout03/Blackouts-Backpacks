@@ -2,7 +2,15 @@
   "itemGroup.blackoutsbackpacks.backpacks": "Blackout's Backpacks",
 
   "item.blackoutsbackpacks.leather_backpack": "Leather Backpack",
+  "item.blackoutsbackpacks.iron_backpack": "Iron Backpack",
+  "item.blackoutsbackpacks.gold_backpack": "Gold Backpack",
+  "item.blackoutsbackpacks.diamond_backpack": "Diamond Backpack",
+  "item.blackoutsbackpacks.emerald_backpack": "Emerald Backpack",
+  "item.blackoutsbackpacks.netherite_backpack": "Netherite Backpack",
   "item.blackoutsbackpacks.ender_backpack": "Ender Backpack",
+
+  "item.blackoutsbackpacks.amethyst_backpack": "Amethyst Backpack",
+  "item.blackoutsbackpacks.ruby_backpack": "Ruby Backpack",
 
   "container.blackoutsbackpacks.backpack": "Backpack",
   "container.blackoutsbackpacks.ender_backpack": "Ender Backpack",

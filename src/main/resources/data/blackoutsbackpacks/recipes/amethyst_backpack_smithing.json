@@ -1,0 +1,25 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "chaosawakens"
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:smithing",
+        "base": {
+          "item": "blackoutsbackpacks:netherite_backpack"
+        },
+        "addition": {
+          "item": "chaosawakens:amethyst_block"
+        },
+        "result": {
+          "item": "blackoutsbackpacks:amethyst_backpack"
+        }
+      }
+    }
+  ]
+}

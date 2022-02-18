@@ -63,6 +63,9 @@ sourceSets {
 dependencies {
     minecraft "net.minecraftforge:forge:${project.minecraftVersion}-${project.forgeVersion}"
 
+    implementation fg.deobf("io.github:ChaosAwakens:1.16.5-${project.chaosawakens}")
+    implementation fg.deobf("software.bernie.geckolib:geckolib-forge-1.16.5:${project.geckolib}")
+
     implementation fg.deobf("curse.maven:projecte-226410:${project.projecte}")
 
     implementation fg.deobf("mezz.jei:jei-1.16.5:${project.jei}:api")
@@ -85,6 +88,14 @@ repositories {
     maven {
         name = "CurseForge"
         url = "https://www.cursemaven.com"
+    }
+    maven {
+        name = "ChaosMaven"
+        url = "https://raw.github.com/ChaosAwakens/ChaosMaven/main"
+    }
+    maven {
+        name = "Geckolib"
+        url = "https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/"
     }
 }
 

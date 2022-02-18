@@ -1,0 +1,25 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "chaosawakens"
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:smithing",
+        "base": {
+          "item": "blackoutsbackpacks:amethyst_backpack"
+        },
+        "addition": {
+          "item": "chaosawakens:ruby_block"
+        },
+        "result": {
+          "item": "blackoutsbackpacks:ruby_backpack"
+        }
+      }
+    }
+  ]
+}

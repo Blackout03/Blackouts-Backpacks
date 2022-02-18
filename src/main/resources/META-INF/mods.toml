@@ -6,7 +6,7 @@ license="All Rights Reserved."
 [[mods]]
 modId="blackoutsbackpacks"
 version="${file.jarVersion}"
-displayName="Blackouts Backpacks"
+displayName="Blackout's Backpacks"
 authors="Blackout"
 description='''Adds Backpacks to Minecraft.'''
 itemIcon="blackoutsbackpacks:leather_backpack"

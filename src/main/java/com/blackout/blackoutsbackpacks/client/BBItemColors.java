@@ -17,8 +17,6 @@ public class BBItemColors {
     }
 
     private static void registerItemColorHandlers(final ItemColors itemColors) {
-        itemColors.register((stack, color) -> {
-            return color > 0 ? -1 : ((IDyeableArmorItem)stack.getItem()).getColor(stack);
-        }, BBItems.LEATHER_BACKPACK.get());
+        itemColors.register((stack, color) -> color > 0 ? -1 : ((IDyeableArmorItem)stack.getItem()).getColor(stack), BBItems.LEATHER_BACKPACK.get());
     }
 }
