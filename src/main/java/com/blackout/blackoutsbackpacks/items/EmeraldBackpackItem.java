@@ -9,7 +9,6 @@ import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.INamedContainerProvider;
-import net.minecraft.item.IDyeableArmorItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
@@ -25,10 +24,10 @@ import net.minecraftforge.items.ItemStackHandler;
 
 import java.util.List;
 
-public class DyeableBackpackItem extends Item implements IDyeableArmorItem {
+public class EmeraldBackpackItem extends Item {
     private static final ITextComponent CONTAINER_TITLE = new TranslationTextComponent("container.blackoutsbackpacks.backpack");
 
-    public DyeableBackpackItem(Properties properties) {
+    public EmeraldBackpackItem(Properties properties) {
         super(properties);
     }
 
@@ -36,13 +35,17 @@ public class DyeableBackpackItem extends Item implements IDyeableArmorItem {
     public ActionResult<ItemStack> use(World worldIn, PlayerEntity playerIn, Hand handIn) {
         //make sure we're server side
         if(!worldIn.isClientSide) {
+            CompoundNBT tag = new CompoundNBT();
             //if it doesn't have a tag - make one to stop crashes
             if(!playerIn.getItemInHand(handIn).hasTag()) {
-                CompoundNBT tag = new CompoundNBT();
                 tag.putInt("width", 9);
-                tag.putInt("height", 1);
+                tag.putInt("height", 5);
 
                 playerIn.getMainHandItem().setTag(tag);
+            }
+
+            if (tag.getInt("height") != 5) {
+                tag.putInt("height", 5);
             }
 
             ServerPlayerEntity serverPlayerEntity = (ServerPlayerEntity) playerIn;
@@ -56,13 +59,18 @@ public class DyeableBackpackItem extends Item implements IDyeableArmorItem {
     @Override
     public void appendHoverText(ItemStack stack, World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         int width = 9;
-        int height = 1;
+        int height = 5;
 
+        CompoundNBT tag = new CompoundNBT();
         if(stack.hasTag()) {
             assert stack.getTag() != null;
             if (stack.getTag().contains("width")) {
                 width = stack.getTag().getInt("width");
                 height = stack.getTag().getInt("height");
+            }
+
+            if (tag.getInt("height") != 5) {
+                tag.putInt("height", 5);
             }
         }
 
@@ -90,7 +98,7 @@ public class DyeableBackpackItem extends Item implements IDyeableArmorItem {
         // constructor takes the hand and backpack stack
         public BackpackItemContainerProvider(Hand hand, ItemStack backpack) {
             int inventoryWidth = 9;
-            int inventoryHeight = 1;
+            int inventoryHeight = 5;
 
             //if no tag make one now
             if(backpack.getTag() == null) {
@@ -106,6 +114,10 @@ public class DyeableBackpackItem extends Item implements IDyeableArmorItem {
             } else {
                 inventoryWidth = tag.getInt("width");
                 inventoryHeight = tag.getInt("height");
+            }
+
+            if (tag.getInt("height") != 5) {
+                tag.putInt("height", 5);
             }
 
             //create our handler using the size

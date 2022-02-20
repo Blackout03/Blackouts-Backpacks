@@ -1,0 +1,35 @@
+{
+  "parent": "chaosawakens:root",
+  "display": {
+    "icon": {
+      "item": "blackoutsbackpacks:ruby_backpack"
+    },
+    "title": {
+      "translate": "advancements.blackoutsbackpacks.obtain_ruby_backpack.title"
+    },
+    "description": {
+      "translate": "advancements.blackoutsbackpacks.obtain_ruby_backpack.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "ruby_backpack": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "blackoutsbackpacks:ruby_backpack"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "ruby_backpack"
+    ]
+  ]
+}

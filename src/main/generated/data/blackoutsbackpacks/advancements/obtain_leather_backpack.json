@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:adventure/root",
+  "display": {
+    "icon": {
+      "item": "blackoutsbackpacks:leather_backpack"
+    },
+    "title": {
+      "translate": "advancements.blackoutsbackpacks.obtain_leather_backpack.title"
+    },
+    "description": {
+      "translate": "advancements.blackoutsbackpacks.obtain_leather_backpack.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "leather_backpack": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "blackoutsbackpacks:leather_backpack"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "leather_backpack"
+    ]
+  ]
+}

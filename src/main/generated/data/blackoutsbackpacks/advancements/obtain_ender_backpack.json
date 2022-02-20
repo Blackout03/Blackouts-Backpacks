@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:story/form_obsidian",
+  "display": {
+    "icon": {
+      "item": "blackoutsbackpacks:ender_backpack"
+    },
+    "title": {
+      "translate": "advancements.blackoutsbackpacks.obtain_ender_backpack.title"
+    },
+    "description": {
+      "translate": "advancements.blackoutsbackpacks.obtain_ender_backpack.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "ender_backpack": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "blackoutsbackpacks:ender_backpack"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "ender_backpack"
+    ]
+  ]
+}

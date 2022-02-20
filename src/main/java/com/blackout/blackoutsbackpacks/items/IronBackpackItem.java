@@ -2,6 +2,7 @@ package com.blackout.blackoutsbackpacks.items;
 
 import com.blackout.blackoutsbackpacks.container.BackpackContainer;
 import com.blackout.blackoutsbackpacks.registry.BBStats;
+import com.blackout.blackoutsbackpacks.util.BBUtils;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
@@ -23,28 +24,28 @@ import net.minecraftforge.items.ItemStackHandler;
 
 import java.util.List;
 
-public class BackpackItem extends Item {
+public class IronBackpackItem extends Item {
     private static final ITextComponent CONTAINER_TITLE = new TranslationTextComponent("container.blackoutsbackpacks.backpack");
-    public int width;
-    public int height;
 
-    public BackpackItem(Properties properties, int width, int height) {
+    public IronBackpackItem(Properties properties) {
         super(properties);
-        this.width = width;
-        this.height = height;
     }
 
     @Override
     public ActionResult<ItemStack> use(World worldIn, PlayerEntity playerIn, Hand handIn) {
         //make sure we're server side
         if(!worldIn.isClientSide) {
+            CompoundNBT tag = new CompoundNBT();
             //if it doesn't have a tag - make one to stop crashes
             if(!playerIn.getItemInHand(handIn).hasTag()) {
-                CompoundNBT tag = new CompoundNBT();
-                tag.putInt("width", width);
-                tag.putInt("height", height);
+                tag.putInt("width", 9);
+                tag.putInt("height", 2);
 
                 playerIn.getMainHandItem().setTag(tag);
+            }
+
+            if (tag.getInt("height") != 2) {
+                tag.putInt("height", 2);
             }
 
             ServerPlayerEntity serverPlayerEntity = (ServerPlayerEntity) playerIn;
@@ -57,11 +58,19 @@ public class BackpackItem extends Item {
 
     @Override
     public void appendHoverText(ItemStack stack, World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
+        int width = 9;
+        int height = 2;
+
+        CompoundNBT tag = new CompoundNBT();
         if(stack.hasTag()) {
             assert stack.getTag() != null;
             if (stack.getTag().contains("width")) {
                 width = stack.getTag().getInt("width");
                 height = stack.getTag().getInt("height");
+            }
+
+            if (tag.getInt("height") != 2) {
+                tag.putInt("height", 2);
             }
         }
 
@@ -88,6 +97,9 @@ public class BackpackItem extends Item {
 
         // constructor takes the hand and backpack stack
         public BackpackItemContainerProvider(Hand hand, ItemStack backpack) {
+            int inventoryWidth = 9;
+            int inventoryHeight = 2;
+
             //if no tag make one now
             if(backpack.getTag() == null) {
                 backpack.setTag(new CompoundNBT());
@@ -97,24 +109,30 @@ public class BackpackItem extends Item {
 
             //if no width add it now
             if(!tag.contains("width")) {
-                tag.putInt("width", width);
-                tag.putInt("height", height);
+                tag.putInt("width", inventoryWidth);
+                tag.putInt("height", inventoryHeight);
             } else {
-                width = tag.getInt("width");
-                height = tag.getInt("height");
+                inventoryWidth = tag.getInt("width");
+                inventoryHeight = tag.getInt("height");
+            }
+
+            if (tag.getInt("height") != 2) {
+                tag.putInt("height", 2);
             }
 
             //create our handler using the size
-            ItemStackHandler inventoryHandler = new ItemStackHandler(width * height);
+            ItemStackHandler inventoryHandler = new ItemStackHandler(inventoryWidth * inventoryHeight);
 
             if(tag.contains("Inventory")) {
                 //read from nbt!
                 inventoryHandler.deserializeNBT(tag.getCompound("Inventory"));
+                //fix the size if need be
+                inventoryHandler = BBUtils.validateHandlerSize(inventoryHandler, inventoryWidth, inventoryHeight);
             }
 
             // save all this data so our container can use it
-            this.inventoryWidth = width;
-            this.inventoryHeight = height;
+            this.inventoryWidth = inventoryWidth;
+            this.inventoryHeight = inventoryHeight;
             this.inventory = inventoryHandler;
             this.hand = hand;
         }

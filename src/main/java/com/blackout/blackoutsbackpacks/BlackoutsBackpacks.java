@@ -1,10 +1,12 @@
 package com.blackout.blackoutsbackpacks;
 
+import com.blackout.blackoutsbackpacks.data.BBAdvancementProvider;
 import com.blackout.blackoutsbackpacks.data.BBRecipeProvider;
 import com.blackout.blackoutsbackpacks.data.BBTagProvider;
 import com.blackout.blackoutsbackpacks.registry.BBContainerTypes;
 import com.blackout.blackoutsbackpacks.registry.BBItems;
 import com.blackout.blackoutsbackpacks.registry.BBStats;
+import io.github.chaosawakens.data.CAAdvancementProvider;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.ForgeMod;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -42,6 +44,7 @@ public class BlackoutsBackpacks {
         final ExistingFileHelper existing = event.getExistingFileHelper();
 
         if (event.includeServer()) {
+            dataGenerator.addProvider(new BBAdvancementProvider(dataGenerator));
             dataGenerator.addProvider(new BBRecipeProvider(dataGenerator));
             dataGenerator.addProvider(new BBTagProvider.BBItemTagProvider(dataGenerator, existing));
         }

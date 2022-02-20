@@ -1,6 +1,15 @@
 {
   "itemGroup.blackoutsbackpacks.backpacks": "Blackout's Backpacks",
 
+  "advancements.blackoutsbackpacks.obtain_leather_backpack.title": "Gone Campin'",
+  "advancements.blackoutsbackpacks.obtain_leather_backpack.description": "Obtain Leather Backpack.",
+  "advancements.blackoutsbackpacks.obtain_ender_backpack.title": "An Eye of Refined Taste.",
+  "advancements.blackoutsbackpacks.obtain_ender_backpack.description": "Obtain Ender Backpack.",
+  "advancements.blackoutsbackpacks.obtain_netherite_backpack.title": "Hot With 20% Off.",
+  "advancements.blackoutsbackpacks.obtain_netherite_backpack.description": "Obtain Netherite Backpack.",
+  "advancements.blackoutsbackpacks.obtain_ruby_backpack.title": "Chaos Storage.",
+  "advancements.blackoutsbackpacks.obtain_ruby_backpack.description": "Obtain Ruby Backpack.",
+
   "item.blackoutsbackpacks.leather_backpack": "Leather Backpack",
   "item.blackoutsbackpacks.iron_backpack": "Iron Backpack",
   "item.blackoutsbackpacks.gold_backpack": "Gold Backpack",

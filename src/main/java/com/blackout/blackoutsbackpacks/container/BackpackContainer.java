@@ -1,7 +1,9 @@
 package com.blackout.blackoutsbackpacks.container;
 
+import com.blackout.blackoutsbackpacks.items.*;
 import com.blackout.blackoutsbackpacks.registry.BBContainerTypes;
 import com.blackout.blackoutsbackpacks.registry.BBItems;
+import com.blackout.blackoutsbackpacks.util.BBUtils;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ItemStack;
@@ -18,33 +20,25 @@ public class BackpackContainer extends BBBaseContainer {
         ItemStack backpack = playerInventory.player.getItemInHand(hand);
 
         //default width
-        int inventoryWidth;
+        int inventoryWidth = 9;
         int inventoryHeight;
 
-        if (playerInventory.getSelected().getItem().equals(BBItems.LEATHER_BACKPACK.get())) {
-            inventoryWidth = BBItems.LEATHER_BACKPACK.get().width;
-            inventoryHeight = BBItems.LEATHER_BACKPACK.get().height;
-        } else if (playerInventory.getSelected().getItem().equals(BBItems.IRON_BACKPACK.get())) {
-            inventoryWidth = BBItems.IRON_BACKPACK.get().width;
-            inventoryHeight = BBItems.IRON_BACKPACK.get().height;
-        } else if (playerInventory.getSelected().getItem().equals(BBItems.GOLD_BACKPACK.get())) {
-            inventoryWidth = BBItems.GOLD_BACKPACK.get().width;
-            inventoryHeight = BBItems.GOLD_BACKPACK.get().height;
-        } else if (playerInventory.getSelected().getItem().equals(BBItems.DIAMOND_BACKPACK.get())) {
-            inventoryWidth = BBItems.DIAMOND_BACKPACK.get().width;
-            inventoryHeight = BBItems.DIAMOND_BACKPACK.get().height;
-        } else if (playerInventory.getSelected().getItem().equals(BBItems.EMERALD_BACKPACK.get())) {
-            inventoryWidth = BBItems.EMERALD_BACKPACK.get().width;
-            inventoryHeight = BBItems.EMERALD_BACKPACK.get().height;
-        } else if (playerInventory.getSelected().getItem().equals(BBItems.NETHERITE_BACKPACK.get())) {
-            inventoryWidth = BBItems.NETHERITE_BACKPACK.get().width;
-            inventoryHeight = BBItems.NETHERITE_BACKPACK.get().height;
-        } else if (playerInventory.getSelected().getItem().equals(BBItems.AMETHYST_BACKPACK.get())) {
-            inventoryWidth = BBItems.AMETHYST_BACKPACK.get().width;
-            inventoryHeight = BBItems.AMETHYST_BACKPACK.get().height;
-        } else if (playerInventory.getSelected().getItem().equals(BBItems.RUBY_BACKPACK.get())) {
-            inventoryWidth = BBItems.RUBY_BACKPACK.get().width;
-            inventoryHeight = BBItems.RUBY_BACKPACK.get().height;
+        if (playerInventory.getSelected().getItem() instanceof DyeableBackpackItem) {
+            inventoryHeight = 1;
+        } else if (playerInventory.getSelected().getItem() instanceof IronBackpackItem) {
+            inventoryHeight = 2;
+        } else if (playerInventory.getSelected().getItem() instanceof GoldBackpackItem) {
+            inventoryHeight = 3;
+        } else if (playerInventory.getSelected().getItem() instanceof DiamondBackpackItem) {
+            inventoryHeight = 4;
+        } else if (playerInventory.getSelected().getItem() instanceof EmeraldBackpackItem) {
+            inventoryHeight = 5;
+        } else if (playerInventory.getSelected().getItem() instanceof NetheriteBackpackItem) {
+            inventoryHeight = 6;
+        } else if (playerInventory.getSelected().getItem() instanceof AmethystBackpackItem) {
+            inventoryHeight = 7;
+        } else if (playerInventory.getSelected().getItem() instanceof RubyBackpackItem) {
+            inventoryHeight = 8;
         } else {
             inventoryWidth = 0;
             inventoryHeight = 0;
@@ -72,6 +66,8 @@ public class BackpackContainer extends BBBaseContainer {
         if(tag.contains("Inventory")) {
             //read in the data from the backpack
             inventoryHandler.deserializeNBT(tag.getCompound("Inventory"));
+            //fix the size if need be
+            inventoryHandler = BBUtils.validateHandlerSize(inventoryHandler, inventoryWidth, inventoryHeight);
         }
 
         return new BackpackContainer(windowID, playerInventory, inventoryWidth, inventoryHeight, inventoryHandler, hand);

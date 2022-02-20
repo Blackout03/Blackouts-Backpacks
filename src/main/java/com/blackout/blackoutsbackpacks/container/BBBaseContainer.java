@@ -1,7 +1,5 @@
 package com.blackout.blackoutsbackpacks.container;
 
-import com.blackout.blackoutsbackpacks.items.BackpackItem;
-import com.blackout.blackoutsbackpacks.registry.BBContainerTypes;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;

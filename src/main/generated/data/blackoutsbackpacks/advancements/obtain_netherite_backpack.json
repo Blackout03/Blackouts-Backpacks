@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:nether/obtain_ancient_debris",
+  "display": {
+    "icon": {
+      "item": "blackoutsbackpacks:netherite_backpack"
+    },
+    "title": {
+      "translate": "advancements.blackoutsbackpacks.obtain_netherite_backpack.title"
+    },
+    "description": {
+      "translate": "advancements.blackoutsbackpacks.obtain_netherite_backpack.description"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "netherite_backpack": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "blackoutsbackpacks:netherite_backpack"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "netherite_backpack"
+    ]
+  ]
+}
