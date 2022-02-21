@@ -2,7 +2,6 @@ package com.blackout.blackoutsbackpacks.container;
 
 import com.blackout.blackoutsbackpacks.items.*;
 import com.blackout.blackoutsbackpacks.registry.BBContainerTypes;
-import com.blackout.blackoutsbackpacks.registry.BBItems;
 import com.blackout.blackoutsbackpacks.util.BBUtils;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
