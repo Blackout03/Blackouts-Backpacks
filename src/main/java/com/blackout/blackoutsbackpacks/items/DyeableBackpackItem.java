@@ -26,9 +26,9 @@ public class DyeableBackpackItem extends Item implements IDyeableArmorItem {
     @Override
     public ActionResult<ItemStack> use(World worldIn, PlayerEntity playerIn, Hand handIn) {
         //make sure we're server side
-        if(!worldIn.isClientSide) {
+        if (!worldIn.isClientSide) {
             //if it doesn't have a tag - make one to stop crashes
-            if(!playerIn.getItemInHand(handIn).hasTag()) {
+            if (!playerIn.getItemInHand(handIn).hasTag()) {
                 CompoundNBT tag = new CompoundNBT();
                 tag.putInt("width", 9);
                 tag.putInt("height", 1);
@@ -49,7 +49,7 @@ public class DyeableBackpackItem extends Item implements IDyeableArmorItem {
         int width = 9;
         int height = 1;
 
-        if(stack.hasTag()) {
+        if (stack.hasTag()) {
             assert stack.getTag() != null;
             if (stack.getTag().contains("width")) {
                 width = stack.getTag().getInt("width");

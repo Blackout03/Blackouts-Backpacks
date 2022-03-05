@@ -25,10 +25,10 @@ public class IronBackpackItem extends Item {
     @Override
     public ActionResult<ItemStack> use(World worldIn, PlayerEntity playerIn, Hand handIn) {
         //make sure we're server side
-        if(!worldIn.isClientSide) {
+        if (!worldIn.isClientSide) {
             CompoundNBT tag = new CompoundNBT();
             //if it doesn't have a tag - make one to stop crashes
-            if(!playerIn.getItemInHand(handIn).hasTag()) {
+            if (!playerIn.getItemInHand(handIn).hasTag()) {
                 tag.putInt("width", 9);
                 tag.putInt("height", 2);
 
@@ -53,7 +53,7 @@ public class IronBackpackItem extends Item {
         int height = 2;
 
         CompoundNBT tag = new CompoundNBT();
-        if(stack.hasTag()) {
+        if (stack.hasTag()) {
             assert stack.getTag() != null;
             if (stack.getTag().contains("width")) {
                 width = stack.getTag().getInt("width");

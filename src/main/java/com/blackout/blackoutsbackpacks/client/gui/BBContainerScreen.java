@@ -1,21 +1,21 @@
 package com.blackout.blackoutsbackpacks.client.gui;
 
 import com.blackout.blackoutsbackpacks.BlackoutsBackpacks;
-import com.blackout.blackoutsbackpacks.container.BBBaseContainer;
+import com.blackout.blackoutsbackpacks.container.BBContainer;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import net.minecraft.client.gui.screen.inventory.ContainerScreen;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 
-public class BBContainerScreen extends ContainerScreen<BBBaseContainer> {
+public class BBContainerScreen extends ContainerScreen<BBContainer> {
     public static ResourceLocation CHEST_GUI_TEXTURE = new ResourceLocation(BlackoutsBackpacks.MODID, "textures/gui/chest.png");
     public static ResourceLocation CHEST_GUI_SLOTS_TEXTURE = new ResourceLocation(BlackoutsBackpacks.MODID, "textures/gui/chest_slots.png");
 
     public int chestWidth;
     public int chestHeight;
 
-    public BBContainerScreen(BBBaseContainer chestContainer, PlayerInventory inv, ITextComponent titleIn) {
+    public BBContainerScreen(BBContainer chestContainer, PlayerInventory inv, ITextComponent titleIn) {
         super(chestContainer, inv, titleIn);
 
         this.chestWidth = chestContainer.chestWidth;
@@ -27,7 +27,7 @@ public class BBContainerScreen extends ContainerScreen<BBBaseContainer> {
 
         //move the inventory tag to the center
         inventoryLabelY = 16 + (chestHeight * 18) + 3;
-        inventoryLabelX = (int)(7 + ((chestWidth > 9 ? ((chestWidth - 9) * 18) / 2f : 0)));
+        inventoryLabelX = (int) (7 + ((chestWidth > 9 ? ((chestWidth - 9) * 18) / 2f : 0)));
     }
 
     @Override
@@ -37,7 +37,7 @@ public class BBContainerScreen extends ContainerScreen<BBBaseContainer> {
         assert minecraft != null;
         minecraft.textureManager.bind(CHEST_GUI_TEXTURE);
 
-        int playerInvX = (int)(7 + ((chestWidth > 9 ? ((chestWidth - 9) * 18) / 2f : 0)));
+        int playerInvX = (int) (7 + ((chestWidth > 9 ? ((chestWidth - 9) * 18) / 2f : 0)));
 
         //draw the center of the GUI using the texture
         blit(matrixStack, leftPos + 7, topPos + 7, imageWidth - 14, imageHeight - 14, 8f, 8f, 1, 1, 15, 15);
@@ -71,7 +71,7 @@ public class BBContainerScreen extends ContainerScreen<BBBaseContainer> {
         assert minecraft != null;
         minecraft.textureManager.bind(CHEST_GUI_SLOTS_TEXTURE);
         //blit the texture for slots using the amount given
-        blit(matrixStack, leftPos + x, topPos + y, w * 18, h * 18, 0f, 0f, w * 18, h * 18, 432, 216);
+        blit(matrixStack, leftPos + x, topPos + y, w * 18, h * 18, 0f, 0f, w * 18, h * 18, 162, 144);
     }
 
     @Override

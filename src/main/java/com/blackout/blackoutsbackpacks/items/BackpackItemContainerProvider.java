@@ -1,6 +1,6 @@
 package com.blackout.blackoutsbackpacks.items;
 
-import com.blackout.blackoutsbackpacks.container.BackpackContainer;
+import com.blackout.blackoutsbackpacks.container.BBContainer.BackpackContainer;
 import com.blackout.blackoutsbackpacks.util.BBUtils;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
@@ -26,14 +26,14 @@ public class BackpackItemContainerProvider implements INamedContainerProvider {
         int inventoryHeight = height;
 
         //if no tag make one now
-        if(backpack.getTag() == null) {
+        if (backpack.getTag() == null) {
             backpack.setTag(new CompoundNBT());
         }
 
         CompoundNBT tag = backpack.getTag();
 
         //if no width add it now
-        if(!tag.contains("width")) {
+        if (!tag.contains("width")) {
             tag.putInt("width", inventoryWidth);
             tag.putInt("height", inventoryHeight);
         } else {
@@ -48,7 +48,7 @@ public class BackpackItemContainerProvider implements INamedContainerProvider {
         //create our handler using the size
         ItemStackHandler inventoryHandler = new ItemStackHandler(inventoryWidth * inventoryHeight);
 
-        if(tag.contains("Inventory")) {
+        if (tag.contains("Inventory")) {
             //read from nbt!
             inventoryHandler.deserializeNBT(tag.getCompound("Inventory"));
             //fix the size if need be

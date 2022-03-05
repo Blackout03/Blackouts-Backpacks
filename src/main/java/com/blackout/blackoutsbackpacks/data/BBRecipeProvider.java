@@ -15,6 +15,14 @@ public class BBRecipeProvider extends RecipeProvider {
         super(gen);
     }
 
+    private static void surroundItem(Consumer<IFinishedRecipe> consumer, IItemProvider pOutput, IItemProvider pSurroundMaterial, IItemProvider pItemMaterial) {
+        ShapedRecipeBuilder.shaped(pOutput).define('#', pSurroundMaterial).define('X', pItemMaterial).pattern("###").pattern("#X#").pattern("###").unlockedBy("has_" + pSurroundMaterial.asItem(), has(pSurroundMaterial)).save(consumer);
+    }
+
+    private static void backpackSmithing(Consumer<IFinishedRecipe> consumer, Item output, Item input, Item ingredient) {
+        SmithingRecipeBuilder.smithing(Ingredient.of(input), Ingredient.of(ingredient), output).unlocks("has_" + ingredient, has(ingredient)).save(consumer, "blackoutsbackpacks:" + output + "_smithing");
+    }
+
     public String getName() {
         return BlackoutsBackpacks.MODNAME + ": Recipes";
     }
@@ -29,13 +37,5 @@ public class BBRecipeProvider extends RecipeProvider {
         backpackSmithing(consumer, BBItems.DIAMOND_BACKPACK.get(), BBItems.GOLD_BACKPACK.get(), Items.DIAMOND_BLOCK);
         backpackSmithing(consumer, BBItems.EMERALD_BACKPACK.get(), BBItems.DIAMOND_BACKPACK.get(), Items.EMERALD_BLOCK);
         backpackSmithing(consumer, BBItems.NETHERITE_BACKPACK.get(), BBItems.EMERALD_BACKPACK.get(), Items.NETHERITE_INGOT);
-    }
-
-    private static void surroundItem(Consumer<IFinishedRecipe> consumer, IItemProvider pOutput, IItemProvider pSurroundMaterial, IItemProvider pItemMaterial) {
-        ShapedRecipeBuilder.shaped(pOutput).define('#', pSurroundMaterial).define('X', pItemMaterial).pattern("###").pattern("#X#").pattern("###").unlockedBy("has_" + pSurroundMaterial.asItem(), has(pSurroundMaterial)).save(consumer);
-    }
-
-    private static void backpackSmithing(Consumer<IFinishedRecipe> consumer, Item output, Item input, Item ingredient) {
-        SmithingRecipeBuilder.smithing(Ingredient.of(input), Ingredient.of(ingredient), output).unlocks("has_" + ingredient, has(ingredient)).save(consumer, "blackoutsbackpacks:" + output + "_smithing");
     }
 }

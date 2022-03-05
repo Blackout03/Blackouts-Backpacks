@@ -2,7 +2,7 @@ package com.blackout.blackoutsbackpacks.registry;
 
 import com.blackout.blackoutsbackpacks.BlackoutsBackpacks;
 import com.blackout.blackoutsbackpacks.client.gui.BBContainerScreen;
-import com.blackout.blackoutsbackpacks.container.BackpackContainer;
+import com.blackout.blackoutsbackpacks.container.BBContainer.BackpackContainer;
 import net.minecraft.client.gui.ScreenManager;
 import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.ContainerType;
