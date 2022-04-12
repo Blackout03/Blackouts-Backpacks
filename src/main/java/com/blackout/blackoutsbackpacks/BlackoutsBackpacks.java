@@ -6,49 +6,68 @@ import com.blackout.blackoutsbackpacks.data.BBTagProvider;
 import com.blackout.blackoutsbackpacks.registry.BBContainerTypes;
 import com.blackout.blackoutsbackpacks.registry.BBItems;
 import com.blackout.blackoutsbackpacks.registry.BBStats;
+import io.github.chaosawakens.api.CAReflectionHelper;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.ModContainer;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.GatherDataEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.forgespi.language.IModInfo;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.apache.maven.artifact.versioning.ArtifactVersion;
+
+import java.util.Optional;
 
 @Mod(BlackoutsBackpacks.MODID)
 public class BlackoutsBackpacks {
-    public static final String MODID = "blackoutsbackpacks";
-    public static final String MODNAME = "Blackout's Backpacks";
-    public static final String VERSION = "1.0.0";
-    public static final Logger LOGGER = LogManager.getLogger();
+	public static final String MODID = "blackoutsbackpacks";
+	public static final String MODNAME = "Blackout's Backpacks";
+	public static ArtifactVersion VERSION = null;
+	public static final Logger LOGGER = LogManager.getLogger();
 
 
-    public BlackoutsBackpacks() {
-        LOGGER.debug(MODNAME + " Version is: " + VERSION);
-        IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
+	public BlackoutsBackpacks() {
+		Optional<? extends ModContainer> opt = ModList.get().getModContainerById(MODID);
+		if (opt.isPresent()) {
+			IModInfo modInfo = opt.get().getModInfo();
+			VERSION = modInfo.getVersion();
+		} else {
+			LOGGER.warn("Cannot get version from mod info");
+		}
 
-        eventBus.addListener(this::gatherData);
+		LOGGER.debug(MODNAME + " Version is: " + VERSION);
+		LOGGER.debug("Mod ID for " + MODNAME + " is: " + MODID);
 
-        BBItems.ITEMS.register(eventBus);
-        BBStats.STAT_TYPES.register(eventBus);
-        BBContainerTypes.CONTAINER_TYPES.register(eventBus);
+		CAReflectionHelper.classLoad("com.blackout.blackoutsbackpacks.registry.BBTags");
 
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::clientSetup);
-    }
+		IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
-    private void gatherData(final GatherDataEvent event) {
-        DataGenerator dataGenerator = event.getGenerator();
-        final ExistingFileHelper existing = event.getExistingFileHelper();
+		eventBus.addListener(this::gatherData);
 
-        if (event.includeServer()) {
-            dataGenerator.addProvider(new BBAdvancementProvider(dataGenerator));
-            dataGenerator.addProvider(new BBRecipeProvider(dataGenerator));
-            dataGenerator.addProvider(new BBTagProvider.BBItemTagProvider(dataGenerator, existing));
-        }
-    }
+		BBItems.ITEMS.register(eventBus);
+		BBStats.STAT_TYPES.register(eventBus);
+		BBContainerTypes.CONTAINER_TYPES.register(eventBus);
 
-    private void clientSetup(final FMLClientSetupEvent event) {
-        BBContainerTypes.registerScreens(event);
-    }
+		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::clientSetup);
+	}
+
+	private void gatherData(final GatherDataEvent event) {
+		DataGenerator dataGenerator = event.getGenerator();
+		final ExistingFileHelper existing = event.getExistingFileHelper();
+
+		if (event.includeServer()) {
+			dataGenerator.addProvider(new BBAdvancementProvider(dataGenerator));
+			dataGenerator.addProvider(new BBRecipeProvider(dataGenerator));
+			dataGenerator.addProvider(new BBTagProvider.BBItemTagProvider(dataGenerator, existing));
+		}
+	}
+
+	private void clientSetup(final FMLClientSetupEvent event) {
+		BBContainerTypes.registerScreens(event);
+	}
 }

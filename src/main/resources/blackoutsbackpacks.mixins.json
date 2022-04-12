@@ -1,0 +1,11 @@
+{
+  "required": false,
+  "package": "com.blackout.blackoutsbackpacks.mixins",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [],
+  "client": [],
+  "refmap": "blackoutsbackpacks.refmap.json",
+  "injectors": {
+	"defaultRequire": 1
+  }
+}

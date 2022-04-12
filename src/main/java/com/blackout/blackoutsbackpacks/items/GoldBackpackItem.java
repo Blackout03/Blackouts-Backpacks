@@ -18,62 +18,62 @@ import net.minecraftforge.fml.network.NetworkHooks;
 import java.util.List;
 
 public class GoldBackpackItem extends Item {
-    public GoldBackpackItem(Properties properties) {
-        super(properties);
-    }
+	public GoldBackpackItem(Properties properties) {
+		super(properties);
+	}
 
-    @Override
-    public ActionResult<ItemStack> use(World worldIn, PlayerEntity playerIn, Hand handIn) {
-        //make sure we're server side
-        if (!worldIn.isClientSide) {
-            CompoundNBT tag = new CompoundNBT();
-            //if it doesn't have a tag - make one to stop crashes
-            if (!playerIn.getItemInHand(handIn).hasTag()) {
-                tag.putInt("width", 9);
-                tag.putInt("height", 3);
+	@Override
+	public ActionResult<ItemStack> use(World worldIn, PlayerEntity playerIn, Hand handIn) {
+		//make sure we're server side
+		if (!worldIn.isClientSide) {
+			CompoundNBT tag = new CompoundNBT();
+			//if it doesn't have a tag - make one to stop crashes
+			if (!playerIn.getItemInHand(handIn).hasTag()) {
+				tag.putInt("width", 9);
+				tag.putInt("height", 3);
 
-                playerIn.getMainHandItem().setTag(tag);
-            }
+				playerIn.getMainHandItem().setTag(tag);
+			}
 
-            if (tag.getInt("height") != 3) {
-                tag.putInt("height", 3);
-            }
+			if (tag.getInt("height") != 3) {
+				tag.putInt("height", 3);
+			}
 
-            ServerPlayerEntity serverPlayerEntity = (ServerPlayerEntity) playerIn;
-            NetworkHooks.openGui(serverPlayerEntity, new BackpackItemContainerProvider(handIn, playerIn.getMainHandItem(), 9, 3), (buf) -> buf.writeInt(handIn == Hand.MAIN_HAND ? 0 : 1));
-            playerIn.awardStat(BBStats.OPEN_BACKPACK);
-        }
+			ServerPlayerEntity serverPlayerEntity = (ServerPlayerEntity) playerIn;
+			NetworkHooks.openGui(serverPlayerEntity, new BackpackItemContainerProvider(handIn, playerIn.getMainHandItem(), 9, 3), (buf) -> buf.writeInt(handIn == Hand.MAIN_HAND ? 0 : 1));
+			playerIn.awardStat(BBStats.OPEN_BACKPACK);
+		}
 
-        return ActionResult.pass(playerIn.getMainHandItem());
-    }
+		return ActionResult.pass(playerIn.getMainHandItem());
+	}
 
-    @Override
-    public void appendHoverText(ItemStack stack, World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        int width = 9;
-        int height = 3;
+	@Override
+	public void appendHoverText(ItemStack stack, World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
+		int width = 9;
+		int height = 3;
 
-        CompoundNBT tag = new CompoundNBT();
-        if (stack.hasTag()) {
-            assert stack.getTag() != null;
-            if (stack.getTag().contains("width")) {
-                width = stack.getTag().getInt("width");
-                height = stack.getTag().getInt("height");
-            }
+		CompoundNBT tag = new CompoundNBT();
+		if (stack.hasTag()) {
+			assert stack.getTag() != null;
+			if (stack.getTag().contains("width")) {
+				width = stack.getTag().getInt("width");
+				height = stack.getTag().getInt("height");
+			}
 
-            if (tag.getInt("height") != 3) {
-                tag.putInt("height", 3);
-            }
-        }
+			if (tag.getInt("height") != 3) {
+				tag.putInt("height", 3);
+			}
+		}
 
-        StringTextComponent widthComponent = new StringTextComponent("Width: ");
-        widthComponent.append(new StringTextComponent(width + "").withStyle(TextFormatting.LIGHT_PURPLE));
+		StringTextComponent widthComponent = new StringTextComponent("Width: ");
+		widthComponent.append(new StringTextComponent(width + "").withStyle(TextFormatting.LIGHT_PURPLE));
 
-        StringTextComponent heightComponent = new StringTextComponent("Height: ");
-        heightComponent.append(new StringTextComponent(height + "").withStyle(TextFormatting.LIGHT_PURPLE));
+		StringTextComponent heightComponent = new StringTextComponent("Height: ");
+		heightComponent.append(new StringTextComponent(height + "").withStyle(TextFormatting.LIGHT_PURPLE));
 
-        tooltip.add(widthComponent);
-        tooltip.add(heightComponent);
+		tooltip.add(widthComponent);
+		tooltip.add(heightComponent);
 
-        super.appendHoverText(stack, worldIn, tooltip, flagIn);
-    }
+		super.appendHoverText(stack, worldIn, tooltip, flagIn);
+	}
 }

@@ -11,12 +11,12 @@ import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(modid = BlackoutsBackpacks.MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class BBItemColors {
-    @SubscribeEvent
-    public static void registerColorHandlers(ColorHandlerEvent.Item event) {
-        registerItemColorHandlers(event.getItemColors());
-    }
+	@SubscribeEvent
+	public static void registerColorHandlers(ColorHandlerEvent.Item event) {
+		registerItemColorHandlers(event.getItemColors());
+	}
 
-    private static void registerItemColorHandlers(final ItemColors itemColors) {
-        itemColors.register((stack, color) -> color > 0 ? -1 : ((IDyeableArmorItem) stack.getItem()).getColor(stack), BBItems.LEATHER_BACKPACK.get());
-    }
+	private static void registerItemColorHandlers(final ItemColors itemColors) {
+		itemColors.register((stack, color) -> color > 0 ? -1 : ((IDyeableArmorItem) stack.getItem()).getColor(stack), BBItems.LEATHER_BACKPACK.get());
+	}
 }

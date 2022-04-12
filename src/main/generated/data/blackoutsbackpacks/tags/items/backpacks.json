@@ -1,0 +1,14 @@
+{
+  "replace": false,
+  "values": [
+    "blackoutsbackpacks:leather_backpack",
+    "blackoutsbackpacks:iron_backpack",
+    "blackoutsbackpacks:gold_backpack",
+    "blackoutsbackpacks:diamond_backpack",
+    "blackoutsbackpacks:emerald_backpack",
+    "blackoutsbackpacks:netherite_backpack",
+    "blackoutsbackpacks:amethyst_backpack",
+    "blackoutsbackpacks:ruby_backpack",
+    "blackoutsbackpacks:ender_backpack"
+  ]
+}

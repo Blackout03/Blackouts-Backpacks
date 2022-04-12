@@ -26,6 +26,13 @@ ordering="NONE"
 side="BOTH"
 
 [[dependencies.blackoutsbackpacks]]
+modId="chaosawakens"
+mandatory=false
+versionRange="[0.9.0.3,]"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.blackoutsbackpacks]]
 modId="projecte"
 mandatory=false
 versionRange="[PE1.0,]"

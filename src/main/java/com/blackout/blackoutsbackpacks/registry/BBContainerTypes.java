@@ -16,16 +16,16 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
 public class BBContainerTypes {
-    public static final DeferredRegister<ContainerType<?>> CONTAINER_TYPES = DeferredRegister.create(ForgeRegistries.CONTAINERS, BlackoutsBackpacks.MODID);
+	public static final DeferredRegister<ContainerType<?>> CONTAINER_TYPES = DeferredRegister.create(ForgeRegistries.CONTAINERS, BlackoutsBackpacks.MODID);
 
-    public static final RegistryObject<ContainerType<BackpackContainer>> BACKPACK_CONTAINER_TYPE = register("backpack", BackpackContainer::createContainerFromItemstack);
+	public static final RegistryObject<ContainerType<BackpackContainer>> BACKPACK_CONTAINER_TYPE = register("backpack", BackpackContainer::createContainerFromItemstack);
 
-    private static <T extends Container> RegistryObject<ContainerType<T>> register(String name, IContainerFactory<T> factory) {
-        return CONTAINER_TYPES.register(name, () -> IForgeContainerType.create(factory));
-    }
+	private static <T extends Container> RegistryObject<ContainerType<T>> register(String name, IContainerFactory<T> factory) {
+		return CONTAINER_TYPES.register(name, () -> IForgeContainerType.create(factory));
+	}
 
-    @OnlyIn(Dist.CLIENT)
-    public static void registerScreens(FMLClientSetupEvent event) {
-        ScreenManager.register(BACKPACK_CONTAINER_TYPE.get(), BBContainerScreen::new);
-    }
+	@OnlyIn(Dist.CLIENT)
+	public static void registerScreens(FMLClientSetupEvent event) {
+		ScreenManager.register(BACKPACK_CONTAINER_TYPE.get(), BBContainerScreen::new);
+	}
 }

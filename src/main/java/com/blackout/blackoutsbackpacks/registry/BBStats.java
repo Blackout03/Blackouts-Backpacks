@@ -12,15 +12,15 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 @Mod.EventBusSubscriber(modid = BlackoutsBackpacks.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class BBStats {
-    public static final DeferredRegister<StatType<?>> STAT_TYPES = DeferredRegister.create(ForgeRegistries.STAT_TYPES, BlackoutsBackpacks.MODID);
+	public static final DeferredRegister<StatType<?>> STAT_TYPES = DeferredRegister.create(ForgeRegistries.STAT_TYPES, BlackoutsBackpacks.MODID);
 
-    public static final ResourceLocation OPEN_BACKPACK = registerCustom("open_backpack");
-    public static final ResourceLocation OPEN_ENDER_BACKPACK = registerCustom("open_ender_backpack");
+	public static final ResourceLocation OPEN_BACKPACK = registerCustom("open_backpack");
+	public static final ResourceLocation OPEN_ENDER_BACKPACK = registerCustom("open_ender_backpack");
 
-    private static ResourceLocation registerCustom(String key) {
-        ResourceLocation resourcelocation = new ResourceLocation(BlackoutsBackpacks.MODID, key);
-        Registry.register(Registry.CUSTOM_STAT, key, resourcelocation);
-        Stats.CUSTOM.get(resourcelocation, IStatFormatter.DEFAULT);
-        return resourcelocation;
-    }
+	private static ResourceLocation registerCustom(String key) {
+		ResourceLocation resourcelocation = new ResourceLocation(BlackoutsBackpacks.MODID, key);
+		Registry.register(Registry.CUSTOM_STAT, key, resourcelocation);
+		Stats.CUSTOM.get(resourcelocation, IStatFormatter.DEFAULT);
+		return resourcelocation;
+	}
 }
