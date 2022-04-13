@@ -1,12 +1,14 @@
 modLoader="javafml"
 loaderVersion="[36,)"
-displayURL="https://blackout03.github.io/"
+issueTrackerURL="https://github.com/Blackout03/Blackouts-Backpacks/issues"
 license="All Rights Reserved."
 
 [[mods]]
 modId="blackoutsbackpacks"
 version="${file.jarVersion}"
 displayName="Blackout's Backpacks"
+updateJSONURL="https://raw.githubusercontent.com/Blackout03/Blackouts-Backpacks/1.16.5-Forge/update.json"
+displayURL="https://www.curseforge.com/minecraft/mc-mods/blackouts-backpacks"
 authors="Blackout"
 description='''Adds Backpacks to Minecraft.'''
 itemIcon="blackoutsbackpacks:leather_backpack"

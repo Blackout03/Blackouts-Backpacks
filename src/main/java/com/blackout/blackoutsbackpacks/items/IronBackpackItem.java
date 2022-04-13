@@ -1,7 +1,9 @@
 package com.blackout.blackoutsbackpacks.items;
 
 import com.blackout.blackoutsbackpacks.registry.BBStats;
+import io.github.chaosawakens.common.config.CAConfig;
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.enchantment.EnchantmentData;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.Item;
@@ -40,6 +42,8 @@ public class IronBackpackItem extends Item {
 			}
 
 			ServerPlayerEntity serverPlayerEntity = (ServerPlayerEntity) playerIn;
+			NetworkHooks.openGui(serverPlayerEntity, new BackpackItemContainerProvider(handIn, playerIn.getMainHandItem(), 9, 2), (buf) -> buf.writeInt(handIn == Hand.MAIN_HAND ? 0 : 1));
+			serverPlayerEntity.closeContainer();
 			NetworkHooks.openGui(serverPlayerEntity, new BackpackItemContainerProvider(handIn, playerIn.getMainHandItem(), 9, 2), (buf) -> buf.writeInt(handIn == Hand.MAIN_HAND ? 0 : 1));
 			playerIn.awardStat(BBStats.OPEN_BACKPACK);
 		}

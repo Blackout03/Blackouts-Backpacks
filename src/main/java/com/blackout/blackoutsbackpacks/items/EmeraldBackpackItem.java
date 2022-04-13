@@ -41,6 +41,8 @@ public class EmeraldBackpackItem extends Item {
 
 			ServerPlayerEntity serverPlayerEntity = (ServerPlayerEntity) playerIn;
 			NetworkHooks.openGui(serverPlayerEntity, new BackpackItemContainerProvider(handIn, playerIn.getMainHandItem(), 9, 5), (buf) -> buf.writeInt(handIn == Hand.MAIN_HAND ? 0 : 1));
+			serverPlayerEntity.closeContainer();
+			NetworkHooks.openGui(serverPlayerEntity, new BackpackItemContainerProvider(handIn, playerIn.getMainHandItem(), 9, 5), (buf) -> buf.writeInt(handIn == Hand.MAIN_HAND ? 0 : 1));
 			playerIn.awardStat(BBStats.OPEN_BACKPACK);
 		}
 
