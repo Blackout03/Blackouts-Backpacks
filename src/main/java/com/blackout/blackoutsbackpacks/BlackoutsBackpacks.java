@@ -30,7 +30,6 @@ public class BlackoutsBackpacks {
 	public static ArtifactVersion VERSION = null;
 	public static final Logger LOGGER = LogManager.getLogger();
 
-
 	public BlackoutsBackpacks() {
 		Optional<? extends ModContainer> opt = ModList.get().getModContainerById(MODID);
 		if (opt.isPresent()) {
