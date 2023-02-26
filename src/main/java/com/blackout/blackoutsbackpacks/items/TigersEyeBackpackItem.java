@@ -17,8 +17,8 @@ import net.minecraftforge.fml.network.NetworkHooks;
 
 import java.util.List;
 
-public class AmethystBackpackItem extends Item {
-	public AmethystBackpackItem(Properties properties) {
+public class TigersEyeBackpackItem extends Item {
+	public TigersEyeBackpackItem(Properties properties) {
 		super(properties);
 	}
 
@@ -30,19 +30,19 @@ public class AmethystBackpackItem extends Item {
 			//if it doesn't have a tag - make one to stop crashes
 			if (!playerIn.getItemInHand(handIn).hasTag()) {
 				tag.putInt("width", 9);
-				tag.putInt("height", 8);
+				tag.putInt("height", 7);
 
 				playerIn.getMainHandItem().setTag(tag);
 			}
 
-			if (tag.getInt("height") != 8) {
-				tag.putInt("height", 8);
+			if (tag.getInt("height") != 7) {
+				tag.putInt("height", 7);
 			}
 
 			ServerPlayerEntity serverPlayerEntity = (ServerPlayerEntity) playerIn;
-			NetworkHooks.openGui(serverPlayerEntity, new BackpackItemContainerProvider(handIn, playerIn.getMainHandItem(), 9, 8), (buf) -> buf.writeInt(handIn == Hand.MAIN_HAND ? 0 : 1));
+			NetworkHooks.openGui(serverPlayerEntity, new BackpackItemContainerProvider(handIn, playerIn.getMainHandItem(), 9, 7), (buf) -> buf.writeInt(handIn == Hand.MAIN_HAND ? 0 : 1));
 			serverPlayerEntity.closeContainer();
-			NetworkHooks.openGui(serverPlayerEntity, new BackpackItemContainerProvider(handIn, playerIn.getMainHandItem(), 9, 8), (buf) -> buf.writeInt(handIn == Hand.MAIN_HAND ? 0 : 1));
+			NetworkHooks.openGui(serverPlayerEntity, new BackpackItemContainerProvider(handIn, playerIn.getMainHandItem(), 9, 7), (buf) -> buf.writeInt(handIn == Hand.MAIN_HAND ? 0 : 1));
 			playerIn.awardStat(BBStats.OPEN_BACKPACK);
 		}
 
@@ -52,7 +52,7 @@ public class AmethystBackpackItem extends Item {
 	@Override
 	public void appendHoverText(ItemStack stack, World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
 		int width = 9;
-		int height = 8;
+		int height = 7;
 
 		CompoundNBT tag = new CompoundNBT();
 		if (stack.hasTag()) {
@@ -62,8 +62,8 @@ public class AmethystBackpackItem extends Item {
 				height = stack.getTag().getInt("height");
 			}
 
-			if (tag.getInt("height") != 8) {
-				tag.putInt("height", 8);
+			if (tag.getInt("height") != 7) {
+				tag.putInt("height", 7);
 			}
 		}
 

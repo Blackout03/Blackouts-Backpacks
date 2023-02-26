@@ -30,19 +30,19 @@ public class RubyBackpackItem extends Item {
 			//if it doesn't have a tag - make one to stop crashes
 			if (!playerIn.getItemInHand(handIn).hasTag()) {
 				tag.putInt("width", 9);
-				tag.putInt("height", 8);
+				tag.putInt("height", 9);
 
 				playerIn.getMainHandItem().setTag(tag);
 			}
 
-			if (tag.getInt("height") != 8) {
-				tag.putInt("height", 8);
+			if (tag.getInt("height") != 9) {
+				tag.putInt("height", 9);
 			}
 
 			ServerPlayerEntity serverPlayerEntity = (ServerPlayerEntity) playerIn;
-			NetworkHooks.openGui(serverPlayerEntity, new BackpackItemContainerProvider(handIn, playerIn.getMainHandItem(), 9, 8), (buf) -> buf.writeInt(handIn == Hand.MAIN_HAND ? 0 : 1));
+			NetworkHooks.openGui(serverPlayerEntity, new BackpackItemContainerProvider(handIn, playerIn.getMainHandItem(), 9, 9), (buf) -> buf.writeInt(handIn == Hand.MAIN_HAND ? 0 : 1));
 			serverPlayerEntity.closeContainer();
-			NetworkHooks.openGui(serverPlayerEntity, new BackpackItemContainerProvider(handIn, playerIn.getMainHandItem(), 9, 8), (buf) -> buf.writeInt(handIn == Hand.MAIN_HAND ? 0 : 1));
+			NetworkHooks.openGui(serverPlayerEntity, new BackpackItemContainerProvider(handIn, playerIn.getMainHandItem(), 9, 9), (buf) -> buf.writeInt(handIn == Hand.MAIN_HAND ? 0 : 1));
 			playerIn.awardStat(BBStats.OPEN_BACKPACK);
 		}
 
@@ -52,7 +52,7 @@ public class RubyBackpackItem extends Item {
 	@Override
 	public void appendHoverText(ItemStack stack, World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
 		int width = 9;
-		int height = 8;
+		int height = 9;
 
 		CompoundNBT tag = new CompoundNBT();
 		if (stack.hasTag()) {
@@ -62,8 +62,8 @@ public class RubyBackpackItem extends Item {
 				height = stack.getTag().getInt("height");
 			}
 
-			if (tag.getInt("height") != 8) {
-				tag.putInt("height", 8);
+			if (tag.getInt("height") != 9) {
+				tag.putInt("height", 9);
 			}
 		}
 

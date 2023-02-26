@@ -4,6 +4,7 @@ import com.blackout.blackoutsbackpacks.items.*;
 import com.blackout.blackoutsbackpacks.registry.BBContainerTypes;
 import com.blackout.blackoutsbackpacks.registry.BBTags;
 import com.blackout.blackoutsbackpacks.util.BBUtils;
+import io.github.chaosawakens.common.items.BigHammerItem;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;
@@ -127,10 +128,11 @@ public class BBContainer extends Container {
 			else if (playerInventory.getSelected().getItem() instanceof IronBackpackItem) inventoryHeight = 2;
 			else if (playerInventory.getSelected().getItem() instanceof GoldBackpackItem) inventoryHeight = 3;
 			else if (playerInventory.getSelected().getItem() instanceof DiamondBackpackItem) inventoryHeight = 4;
-			else if (playerInventory.getSelected().getItem() instanceof EmeraldBackpackItem) inventoryHeight = 5;
-			else if (playerInventory.getSelected().getItem() instanceof NetheriteBackpackItem) inventoryHeight = 6;
-			else if (playerInventory.getSelected().getItem() instanceof AmethystBackpackItem) inventoryHeight = 7;
-			else if (playerInventory.getSelected().getItem() instanceof RubyBackpackItem) inventoryHeight = 8;
+			else if (playerInventory.getSelected().getItem() instanceof NetheriteBackpackItem) inventoryHeight = 5;
+			else if (playerInventory.getSelected().getItem() instanceof EmeraldBackpackItem) inventoryHeight = 6;
+			else if (playerInventory.getSelected().getItem() instanceof TigersEyeBackpackItem) inventoryHeight = 7;
+			else if (playerInventory.getSelected().getItem() instanceof AmethystBackpackItem) inventoryHeight = 8;
+			else if (playerInventory.getSelected().getItem() instanceof RubyBackpackItem) inventoryHeight = 9;
 			else inventoryWidth = 0;
 
 			//if no tag, make one now to stop crashes

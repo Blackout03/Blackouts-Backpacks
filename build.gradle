@@ -1,21 +1,18 @@
 buildscript {
     repositories {
         maven { url = "https://maven.minecraftforge.net/" }
-        maven { url = "https://repo.spongepowered.org/maven" }
         mavenCentral()
     }
     dependencies {
-        classpath(group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true) { exclude group: 'org.apache.logging.log4j' }
-        classpath 'org.apache.logging.log4j:log4j-api:2.11.2'
-        classpath 'org.apache.logging.log4j:log4j-core:2.11.2'
-        classpath group: 'org.spongepowered', name: 'mixingradle', version: '0.7-SNAPSHOT'
+        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
+        classpath 'org.spongepowered:mixingradle:0.7.+'
     }
 }
 
 apply plugin: "net.minecraftforge.gradle"
-apply plugin: "org.spongepowered.mixin"
 apply plugin: "eclipse"
 apply plugin: "maven-publish"
+apply plugin: 'org.spongepowered.mixin'
 
 group = "com.blackout"
 version = "${project.minecraftVersion}-${project.modVersion}"
@@ -29,9 +26,6 @@ minecraft {
     runs {
         client {
             workingDirectory project.file('run')
-            arg "-mixin.config=blackoutsbackpacks.mixins.json"
-            property 'mixin.env.remapRefMap', 'true'
-            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
             property 'forge.logging.markers', 'SCAN'
             property 'forge.logging.console.level', 'debug'
             mods {
@@ -42,9 +36,6 @@ minecraft {
         }
         server {
             workingDirectory project.file('run')
-            arg "-mixin.config=blackoutsbackpacks.mixins.json"
-            property 'mixin.env.remapRefMap', 'true'
-            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
             property 'forge.logging.markers', 'SCAN'
             property 'forge.logging.console.level', 'debug'
             mods {
@@ -55,9 +46,6 @@ minecraft {
         }
         data {
             workingDirectory project.file('run')
-            arg "-mixin.config=blackoutsbackpacks.mixins.json"
-            property 'mixin.env.remapRefMap', 'true'
-            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
             property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
             property 'forge.logging.console.level', 'debug'
             args '--mod', 'blackoutsbackpacks', '--all', '--output', file('src/main/generated/'), '--existing', file('src/main/resources/')
@@ -74,14 +62,8 @@ sourceSets {
     main.resources.srcDirs += 'src/main/generated'
 }
 
-mixin {
-    add sourceSets.main, 'blackoutsbackpacks.refmap.json'
-    config 'blackoutsbackpacks.mixins.json'
-}
-
 dependencies {
     minecraft "net.minecraftforge:forge:${project.minecraftVersion}-${project.forgeVersion}"
-    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 
     implementation fg.deobf("io.github:ChaosAwakens:1.16.5-${project.chaosawakens}")
     implementation fg.deobf("software.bernie.geckolib:geckolib-forge-1.16.5:${project.geckolib}")
@@ -124,8 +106,7 @@ jar {
                 "Implementation-Title"    : project.modName,
                 "Implementation-Vendor"   : "Blackout",
                 "Implementation-Version"  : project.modVersion,
-                "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
-                "MixinConfigs": "blackoutsbackpacks.mixins.json"
+                "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
         ])
     }
 }

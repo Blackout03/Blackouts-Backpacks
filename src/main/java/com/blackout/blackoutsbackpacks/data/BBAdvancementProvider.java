@@ -69,7 +69,7 @@ public class BBAdvancementProvider extends AdvancementProvider {
 		Advancement obtainNetheriteBackpack = registerAdvancement("obtain_netherite_backpack", FrameType.GOAL, BBItems.NETHERITE_BACKPACK.get()).parent(Advancement.Builder.advancement().build(new ResourceLocation("nether/obtain_ancient_debris"))).addCriterion("netherite_backpack",
 				InventoryChangeTrigger.Instance.hasItems(BBItems.NETHERITE_BACKPACK.get())).save(t, id("obtain_netherite_backpack"));
 
-		Advancement obtainRubyBackpack = registerAdvancement("obtain_ruby_backpack", FrameType.CHALLENGE, BBItems.RUBY_BACKPACK.get()).parent(Advancement.Builder.advancement().build(new ResourceLocation(ChaosAwakens.MODID, "root"))).addCriterion("ruby_backpack",
+		Advancement obtainRubyBackpack = registerAdvancement("obtain_ruby_backpack", FrameType.CHALLENGE, BBItems.RUBY_BACKPACK.get()).parent(Advancement.Builder.advancement().build(new ResourceLocation(ChaosAwakens.MODID, "root/root"))).addCriterion("ruby_backpack",
 				InventoryChangeTrigger.Instance.hasItems(BBItems.RUBY_BACKPACK.get())).save(t, id("obtain_ruby_backpack"));
 	}
 

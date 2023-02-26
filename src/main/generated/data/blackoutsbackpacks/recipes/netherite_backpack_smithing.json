@@ -1,7 +1,7 @@
 {
   "type": "minecraft:smithing",
   "base": {
-    "item": "blackoutsbackpacks:emerald_backpack"
+    "item": "blackoutsbackpacks:diamond_backpack"
   },
   "addition": {
     "item": "minecraft:netherite_ingot"

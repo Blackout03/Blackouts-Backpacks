@@ -1,0 +1,44 @@
+{
+  "advancements": [
+    {
+      "conditions": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "chaosawakens"
+        }
+      ],
+      "advancement": {
+        "parent": "minecraft:recipes/root",
+        "rewards": {
+          "recipes": [
+            "blackoutsbackpacks:tigers_eye_backpack_smithing"
+          ]
+        },
+        "criteria": {
+          "has_tigers_eye_block": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+              "items": [
+                {
+                  "item": "chaosawakens:tigers_eye_block"
+                }
+              ]
+            }
+          },
+          "has_the_recipe": {
+            "trigger": "minecraft:recipe_unlocked",
+            "conditions": {
+              "recipe": "blackoutsbackpacks:tigers_eye_backpack_smithing"
+            }
+          }
+        },
+        "requirements": [
+          [
+            "has_tigers_eye_block",
+            "has_the_recipe"
+          ]
+        ]
+      }
+    }
+  ]
+}

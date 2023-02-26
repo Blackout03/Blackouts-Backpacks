@@ -16,7 +16,7 @@ itemIcon="blackoutsbackpacks:leather_backpack"
 [[dependencies.blackoutsbackpacks]]
 modId="forge"
 mandatory=true
-versionRange="[36.2.20,)"
+versionRange="[36.2.39,)"
 ordering="NONE"
 side="BOTH"
 
@@ -30,7 +30,7 @@ side="BOTH"
 [[dependencies.blackoutsbackpacks]]
 modId="chaosawakens"
 mandatory=false
-versionRange="[0.9.0.3,]"
+versionRange="[0.11,]"
 ordering="AFTER"
 side="BOTH"
 

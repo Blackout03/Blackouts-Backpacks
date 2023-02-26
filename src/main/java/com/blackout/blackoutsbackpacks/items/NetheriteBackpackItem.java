@@ -30,19 +30,19 @@ public class NetheriteBackpackItem extends Item {
 			//if it doesn't have a tag - make one to stop crashes
 			if (!playerIn.getItemInHand(handIn).hasTag()) {
 				tag.putInt("width", 9);
-				tag.putInt("height", 6);
+				tag.putInt("height", 5);
 
 				playerIn.getMainHandItem().setTag(tag);
 			}
 
-			if (tag.getInt("height") != 6) {
-				tag.putInt("height", 6);
+			if (tag.getInt("height") != 5) {
+				tag.putInt("height", 5);
 			}
 
 			ServerPlayerEntity serverPlayerEntity = (ServerPlayerEntity) playerIn;
-			NetworkHooks.openGui(serverPlayerEntity, new BackpackItemContainerProvider(handIn, playerIn.getMainHandItem(), 9, 6), (buf) -> buf.writeInt(handIn == Hand.MAIN_HAND ? 0 : 1));
+			NetworkHooks.openGui(serverPlayerEntity, new BackpackItemContainerProvider(handIn, playerIn.getMainHandItem(), 9, 5), (buf) -> buf.writeInt(handIn == Hand.MAIN_HAND ? 0 : 1));
 			serverPlayerEntity.closeContainer();
-			NetworkHooks.openGui(serverPlayerEntity, new BackpackItemContainerProvider(handIn, playerIn.getMainHandItem(), 9, 6), (buf) -> buf.writeInt(handIn == Hand.MAIN_HAND ? 0 : 1));
+			NetworkHooks.openGui(serverPlayerEntity, new BackpackItemContainerProvider(handIn, playerIn.getMainHandItem(), 9, 5), (buf) -> buf.writeInt(handIn == Hand.MAIN_HAND ? 0 : 1));
 			playerIn.awardStat(BBStats.OPEN_BACKPACK);
 		}
 
@@ -52,7 +52,7 @@ public class NetheriteBackpackItem extends Item {
 	@Override
 	public void appendHoverText(ItemStack stack, World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
 		int width = 9;
-		int height = 6;
+		int height = 5;
 
 		CompoundNBT tag = new CompoundNBT();
 		if (stack.hasTag()) {
@@ -62,8 +62,8 @@ public class NetheriteBackpackItem extends Item {
 				height = stack.getTag().getInt("height");
 			}
 
-			if (tag.getInt("height") != 6) {
-				tag.putInt("height", 6);
+			if (tag.getInt("height") != 5) {
+				tag.putInt("height", 5);
 			}
 		}
 

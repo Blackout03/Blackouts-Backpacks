@@ -1,5 +1,5 @@
 {
-  "parent": "chaosawakens:root",
+  "parent": "chaosawakens:root/root",
   "display": {
     "icon": {
       "item": "blackoutsbackpacks:ruby_backpack"

@@ -10,7 +10,7 @@
       "item": "minecraft:leather"
     },
     "X": {
-      "item": "minecraft:chest"
+      "tag": "forge:chests/wooden"
     }
   },
   "result": {

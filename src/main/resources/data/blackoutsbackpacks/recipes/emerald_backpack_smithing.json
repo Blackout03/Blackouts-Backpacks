@@ -11,13 +11,13 @@
       "recipe": {
         "type": "minecraft:smithing",
         "base": {
-          "item": "blackoutsbackpacks:tigers_eye_backpack"
+          "item": "blackoutsbackpacks:netherite_backpack"
         },
         "addition": {
-          "item": "chaosawakens:amethyst_block"
+          "item": "minecraft:emerald_block"
         },
         "result": {
-          "item": "blackoutsbackpacks:amethyst_backpack"
+          "item": "blackoutsbackpacks:emerald_backpack"
         }
       }
     }

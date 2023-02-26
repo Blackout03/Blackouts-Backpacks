@@ -71,7 +71,7 @@ public class BBContainerScreen extends ContainerScreen<BBContainer> {
 		assert minecraft != null;
 		minecraft.textureManager.bind(CHEST_GUI_SLOTS_TEXTURE);
 		//blit the texture for slots using the amount given
-		blit(matrixStack, leftPos + x, topPos + y, w * 18, h * 18, 0f, 0f, w * 18, h * 18, 162, 144);
+		blit(matrixStack, leftPos + x, topPos + y, w * 18, h * 18, 0f, 0f, w * 18, h * 18, 162, 162);
 	}
 
 	@Override

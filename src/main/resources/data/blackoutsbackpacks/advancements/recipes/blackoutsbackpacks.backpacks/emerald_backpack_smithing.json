@@ -1,0 +1,44 @@
+{
+  "advancements": [
+    {
+      "conditions": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "chaosawakens"
+        }
+      ],
+      "advancement": {
+        "parent": "minecraft:recipes/root",
+        "rewards": {
+          "recipes": [
+            "blackoutsbackpacks:emerald_backpack_smithing"
+          ]
+        },
+        "criteria": {
+          "has_emerald_block": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+              "items": [
+                {
+                  "item": "chaosawakens:emerald_block"
+                }
+              ]
+            }
+          },
+          "has_the_recipe": {
+            "trigger": "minecraft:recipe_unlocked",
+            "conditions": {
+              "recipe": "blackoutsbackpacks:emerald_backpack_smithing"
+            }
+          }
+        },
+        "requirements": [
+          [
+            "has_emerald_block",
+            "has_the_recipe"
+          ]
+        ]
+      }
+    }
+  ]
+}
